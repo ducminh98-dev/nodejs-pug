@@ -1,0 +1,15 @@
+extends ../layouts/common
+block layout
+    if errors
+        each err in errors 
+            .alert.alert-danger= err
+    h1 Tranfer 
+    form(action="/tranfer", method="POST") 
+        input#account.form-control(name="_csrf", type="hidden", value=csurfToken)          
+        .form-group
+            label(for="email") Account            
+            input#email.form-control(name="accountId", type="text")
+        .form-group
+            label(for="sdt") Amount
+            input#sdt.form-controll(name="amount", type="text" )
+        button New Tranfer

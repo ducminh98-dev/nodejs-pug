@@ -1,0 +1,22 @@
+extends ../layouts/common
+
+block layout
+
+  h1 Userpages
+  a(href= '/users/create') Create user
+  form(action="/users/search", method="GET")
+    input(type="text", name="q" , value = users.value)
+    button Search
+  ul 
+    each user in users
+      li
+        span= user.name
+        span &nbsp;
+        span= user.phone
+        span &nbsp;
+        img(src= user.avatar, width= "64")
+        span &nbsp;
+        a(href='/users/' + user.id) View
+        a(href='/users/' + user.id + '/edit') Edit
+        a(href='/users/' + user.id + '/delete') Delete
+        

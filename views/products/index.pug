@@ -1,0 +1,39 @@
+extends ../layouts/common
+
+
+block layout
+    block navbar
+    if products.length
+        each items in products
+            
+            .card(style='width: 18rem;')
+                img.card-img-top(src= items.img ,alt='Products')
+                .card-body
+                    h5.card-title= items.name
+                    p.card-text= items.description
+                    br
+                    p.card-text= items.price
+                    a.btn.btn-primary(href='#') Show
+                    span &nbsp;
+                    a.btn.btn-primary(href='/cart/add/' +items.id) Add
+    else
+        h2 Dont have product
+                    
+    nav(aria-label='...')
+            ul.pagination
+                li.page-item.disabled
+                a.page-link(href=`/products/?page=${products.number_page -1}`, tabindex='-1', aria-disabled='true') Previous
+                li.page-item
+                a.page-link(href=`/products/?page=${products.number_page}`)= products.number_page
+                li.page-item.active(aria-current='page')
+                a.page-link(href=`/products/?page=${products.number_page +1}`)=products.number_page +1  
+                    span.sr-only (current)
+                li.page-item
+                a.page-link(href=`/products/?page=${products.number_page +2}`)=products.number_page +2
+                li.page-item
+                a.page-link(href=`/products/?page=${products.number_page +3}`) Next  
+    
+
+
+
+

@@ -1,0 +1,19 @@
+extends ../layouts/common
+block layout
+    if errors
+        each err in errors 
+            .alert.alert-danger= err
+    h1 Cretea-user Page
+    form(action="/users/create", method="POST", enctype="multipart/form-data")
+        .form-group
+            label(for="name") Name
+            input#name.form-control(name="name", type="text",
+            value = values ? values.name: "")
+        .form-group
+            label(for="sdt") Phone
+            input#sdt.form-controll(name="phone", type="text",
+            value= values ? values.phone : "" )
+        .form-group
+            label(for="avatar") Avatar
+            input#avatar.form-controll(name="avatar", type="file")
+        button Create

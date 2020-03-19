@@ -1,0 +1,15 @@
+extends ../layouts/common
+block layout
+    if errors
+        each err in errors 
+            .alert.alert-danger= err
+    h1 Login User
+    form(action="/login", method="POST")
+        .form-group
+            label(for="email") Email            
+            input#email.form-control(name="email", type="text",
+            value=values ? values.email: "")
+        .form-group
+            label(for="sdt") PassWord
+            input#sdt.form-controll(name="password", type="password" )
+        button Login
